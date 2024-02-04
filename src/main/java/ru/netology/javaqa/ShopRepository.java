@@ -11,6 +11,7 @@ public class ShopRepository {
         tmp[tmp.length - 1] = product;
         return tmp;
     }
+
     public Product findById(int id) {
         for (Product product : products) {
             if (product.getId() == id) {
@@ -21,16 +22,15 @@ public class ShopRepository {
     }
 
     public void add(Product product) {
-       if (findById(product.getId()) == product) {
-              throw new AlreadyExistsException("Product with ID " + product.getId() + " is already exists");
-            }
+        if (findById(product.getId()) == product) {
+            throw new AlreadyExistsException("Product with ID " + product.getId() + " is already exists");
+        }
         products = addToArray(products, product);
     }
 
     public Product[] findAll() {
         return products;
     }
-
 
 
     public void remove(int id) {

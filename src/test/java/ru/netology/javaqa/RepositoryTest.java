@@ -38,6 +38,7 @@ public class RepositoryTest {
             repo.remove(4);
         });
     }
+
     @Test
     public void shouldAddElement() {
         ShopRepository repo = new ShopRepository();
@@ -48,8 +49,9 @@ public class RepositoryTest {
 
         Product[] expected = {product1, product2, product3};
         Product[] actual = repo.findAll();
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldNotAddExistsElement() {
         ShopRepository repo = new ShopRepository();
