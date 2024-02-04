@@ -14,6 +14,11 @@ public class ShopRepository {
 
 
     public void add(Product product) {
+        for (Product existProduct : products) {
+            if (existProduct.getId() == product.getId()) {
+                throw new AlreadyExistsException("Product with ID " + product.getId() + " is already exists");
+            }
+        }
         products = addToArray(products, product);
     }
 

@@ -38,5 +38,26 @@ public class RepositoryTest {
             repo.remove(4);
         });
     }
+    @Test
+    public void shouldAddElement() {
+        ShopRepository repo = new ShopRepository();
+
+        repo.add(product1);
+        repo.add(product2);
+        repo.add(product3);
+
+        Product[] expected = {product1, product2, product3};
+        Product[] actual = repo.findAll();
+    }
+    @Test
+    public void shouldNotAddExistsElement() {
+        ShopRepository repo = new ShopRepository();
+
+        repo.add(product1);
+
+        Assertions.assertThrows(AlreadyExistsException.class, () -> {
+            repo.add(product1);
+        });
+    }
 }
 
