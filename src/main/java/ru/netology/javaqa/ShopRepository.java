@@ -22,9 +22,11 @@ public class ShopRepository {
     }
 
     public void add(Product product) {
-        if (findById(product.getId()) == product) {
-            throw new AlreadyExistsException("Product with ID " + product.getId() + " is already exists");
-        }
+        for (Product existId : products)
+            if (findById(product.getId()) == existId) {
+                throw new AlreadyExistsException("Product with ID " + existId + " is already exists");
+            }
+
         products = addToArray(products, product);
     }
 

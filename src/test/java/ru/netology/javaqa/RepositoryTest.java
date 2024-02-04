@@ -7,6 +7,7 @@ public class RepositoryTest {
     Product product1 = new Product(1, "Хлеб", 50);
     Product product2 = new Product(2, "Молоко", 60);
     Product product3 = new Product(3, "Масло", 80);
+    Product product4 = new Product(1, "Шоколад", 100);
 
     @Test
     public void shouldDeleteExistsElement() {
@@ -53,13 +54,13 @@ public class RepositoryTest {
     }
 
     @Test
-    public void shouldNotAddExistsElement() {
+    public void shouldNotAddExistsIdElement() {
         ShopRepository repo = new ShopRepository();
 
         repo.add(product1);
 
         Assertions.assertThrows(AlreadyExistsException.class, () -> {
-            repo.add(product1);
+            repo.add(product4);
         });
     }
 }
